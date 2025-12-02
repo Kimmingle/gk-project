@@ -1,4 +1,4 @@
-package org.gk.example;
+package org.gk.website.example;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

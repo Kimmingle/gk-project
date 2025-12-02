@@ -1,4 +1,4 @@
-package org.gk.example;
+package org.gk.website.example;
 
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
