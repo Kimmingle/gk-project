@@ -19,6 +19,6 @@ public class UserController {
     @PostMapping
     public ResponseEntity<?> login(@RequestBody UserLoginRequest request) { //클라이언트가 보낸 json을 읽기 위해 userLoginRequest 객체로 매핑.
         //UserLoginResponse result = userService.login(request);
-        return ResponseEntity.ok("result");
+        return ResponseEntity.ok("result~");
     }
 }
