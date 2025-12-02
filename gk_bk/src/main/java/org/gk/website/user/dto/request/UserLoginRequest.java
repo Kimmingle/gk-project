@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 @NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
 @RequestMapping("/user")
 public class UserLoginRequest {
     private String user_id;
