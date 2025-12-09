@@ -1,7 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* 전체 화면 중앙 정렬 */
 .login-wrapper {
   height: 100vh;
-  width: 100vh;
+  width: 100vh;;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +20,7 @@
   width: 100%;
   max-width: 380px;
   background: #ffffff;
-  padding: 40px 35px;
+  padding: 40px 35px 40px 35px;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
@@ -31,14 +37,14 @@
 /* 라벨 */
 .login-label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 15px;
   margin-top: 10px;
   font-size: 14px;
   font-weight: 600;
   color: #444;
 }
 
-/* 인풋 스타일 */
+/* 인풋 */
 .login-input {
   width: 100%;
   padding: 12px 14px;
@@ -55,26 +61,60 @@
   box-shadow: 0 0 0 2px rgba(75, 123, 236, 0.2);
 }
 
-/* 로그인 버튼 */
-.login-button {
-  width: 100%;
-  padding: 12px 0;
+/* 체크박스 + 로그인 버튼 줄 */
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 10px;
+}
+
+/* 체크박스 */
+.remember-check {
+  font-size: 14px;
+  color: #444;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* 오른쪽 로그인 버튼(작게) */
+.login-button-small {
+  padding: 10px 18px;
   background-color: #4b7bec;
   color: white;
   border: none;
   border-radius: 8px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
-.login-button:hover {
+.login-button-small:hover {
   background-color: #3867d6;
 }
 
-/* 회원가입 링크 */
+/* 아이디/비밀번호 찾기 */
+.find-links {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.find-link {
+  text-decoration: underline;
+  color: #4b7bec;
+  cursor: pointer;
+}
+
+.divider {
+  color: #888;
+}
+
+/* 회원가입 */
 .signup-text {
   text-align: center;
   margin-top: 20px;

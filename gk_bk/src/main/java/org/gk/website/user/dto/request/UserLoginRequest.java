@@ -1,4 +1,5 @@
 package org.gk.website.user.dto.request;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserLoginRequest {
+    @JsonProperty("user_id")
     private String userId;
     private String password;
 }
