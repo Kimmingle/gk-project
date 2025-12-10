@@ -61,6 +61,18 @@
   box-shadow: 0 0 0 2px rgba(75, 123, 236, 0.2);
 }
 
+
+
+.fail-message {
+  display: inline-block;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -.5px;
+    color: #ff0101;
+    vertical-align: middle;
+    word-break: keep-all;
+}
+
 /* 체크박스 + 로그인 버튼 줄 */
 .login-options {
   display: flex;

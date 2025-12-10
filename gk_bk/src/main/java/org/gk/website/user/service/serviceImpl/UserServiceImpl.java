@@ -9,7 +9,9 @@ import org.gk.website.user.dto.response.UserLoginDTO;
 import org.gk.website.user.dto.response.UserLoginResponse;
 import org.gk.website.user.service.UserService;
 import org.gk.website.user.vo.User;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 @Slf4j
 @Service
@@ -23,16 +25,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserLoginResponse login(UserLoginRequest request){
         UserLoginDTO user = userMapper.findByUserId(request.getUserId());
-        System.out.println(user);
+        System.out.println("uesr:"+user);
 
         if (user == null) {
             System.out.println("존재하지 않는 아이디");
-            throw new RuntimeException("존재하지 않는 아이디");
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "존재하지 않는 아이디");
         }
 
         if (!user.getPassword().equals(request.getPassword())) {
             System.out.println("비밀번호 불일치");
-            throw new RuntimeException("비밀번호 불일치");
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "비밀번호 불일치");
         }
 
         // 2. 비밀번호 검사
