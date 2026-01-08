@@ -1,47 +1,73 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
 import axios from "axios";
 import "../css/login.css";
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+
 
 const Login = () => {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
 
+  const [rememberID, setRememberID] = useState(false);
+  console.log(rememberID);
   const [error, setError] = useState("");
 
   const handleInputId = (e) => setId(e.target.value);
   const handleInputPw = (e) => setPw(e.target.value);
 
+  const handleRememberChange = (e) => {
+    setRememberID(e.target.checked);
+  };
 
+  const navigate = useNavigate(); 
+
+  useEffect(() => {  //쿠키에 아이디 있으면 입력
+          const savedId = Cookies.get("rememberId");
+          if (savedId) {
+              //setRememberId(savedId);
+          }
+      }, []);
+  
 
   const onClickLogin = async () => {
-    
+    if (!id) {
+      setError("아이디를 입력해 주세요.");
+      return;
+    }
 
-      if(!id){
-        setError("아이디를 입력해 주세요.");
-        return;
+    if (!pw) {
+      setError("비밀번호를 입력해 주세요.");
+      return;
+    }
 
-      } else if(!pw){
-        setError("비밀번호를 입력해 주세요.");
-        return;
-
-      } else {
-
-        try {
-          const loginData = await axios.post("http://localhost:8080/api/user", {
-            user_id: id,
-            password: pw,
-          });
-          console.log(loginData.data);
-          alert("로그인 성공!");
-          setError("");
-        } catch (error) {
-          //console.error("로그인 실패~:", error);
-          setError("아이디/비밀번호를 확인해 주세요.");
+    try {
+      const res = await axios.post(
+        "http://localhost:8080/api/user",
+        {
+          user_id: id,
+          password: pw,
         }
+      );
+
+      // 로그인 성공 판단
+      if (res.status === 200) {
+        setError("");
+        alert("로그인 성공!");
+        localStorage.setItem("accessToken", res.data.accessToken);
+        if (rememberID) {
+          Cookies.set('rememberId', id, { expires: 30 });
+        } else {
+          Cookies.remove('rememberId');
+        }
+        navigate('/')
       }
-    
+    } catch (error) {
+      setError("아이디/비밀번호를 확인해 주세요.");
+    }
   };
+
 
   return (
     <div className="login-wrapper">
@@ -75,10 +101,10 @@ const Login = () => {
           {/* 아이디 기억하기 */}
           <div className="login-options">
             <label className="remember-check">
-              <input type="checkbox" /> 아이디 기억
+              <input type="checkbox" checked={rememberID} onChange={handleRememberChange} /> 아이디 기억
             </label>
 
-            <button type="button" className="login-button-small" onClick={onClickLogin}>
+            <button type="button" className="login-button-small" onClick={onClickLogin} >
               로그인
             </button>
           </div>

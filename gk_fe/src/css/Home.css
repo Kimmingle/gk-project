@@ -1,10 +1,120 @@
-.home-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow: hidden;
+* {
+box-sizing: border-box;
+}
+
+
+body {
+margin: 0;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
+background: #f9fafb;
+color: #111827;
+}
+
+
+.layout {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+
+
+/* 화면을 넓게 쓰는 핵심 포인트 */
+.inner {
+width: 100vw; /* 뷰포트 전체 폭 사용 */
+max-width: none; /* 제한 제거 (앱처럼 보이던 원인) */
+margin: 0; /* 왼쪽으로 밀리던 원인 제거 */
+padding: 0 40px; /* 좌우 여백만 유지 */
+}
+
+
+.header {
+background: #ffffff;
+border-bottom: 1px solid #e5e7eb;
+}
+
+
+.header .inner {
+height: 64px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+
+.logo {
+font-size: 20px;
+font-weight: 700;
+}
+
+
+.nav a {
+margin-left: 20px;
+text-decoration: none;
+font-size: 14px;
+color: #374151;
+}
+
+
+.nav a:hover {
+color: #111827;
+}
+
+
+.main {
+flex: 1;
+display: flex;
+align-items: center;
+background: #f9fafb;
+}
+
+
+.main .inner {
+text-align: center;
+padding: 80px 24px;
+}
+
+
+.title {
+font-size: 30px;
+font-weight: 700;
+margin-bottom: 16px;
+}
+
+
+.desc {
+font-size: 18px;
+color: #6b7280;
+margin-bottom: 32px;
+}
+
+
+.cta {
+padding: 14px 32px;
+font-size: 16px;
+border: none;
+border-radius: 10px;
+background: #2563eb;
+color: #ffffff;
+cursor: pointer;
+}
+
+
+.cta:hover {
+background: #1d4ed8;
+}
+
+
+.footer {
+background: #ffffff;
+border-top: 1px solid #e5e7eb;
+font-size: 12px;
+color: #9ca3af;
+}
+
+
+.footer .inner {
+height: 56px;
+display: flex;
+align-items: center;
+justify-content: center;
 }
