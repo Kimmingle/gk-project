@@ -11,7 +11,7 @@ const Login = () => {
   const [pw, setPw] = useState("");
 
   const [rememberID, setRememberID] = useState(false);
-  console.log(rememberID);
+  //console.log(rememberID);
   const [error, setError] = useState("");
 
   const handleInputId = (e) => setId(e.target.value);
@@ -54,8 +54,12 @@ const Login = () => {
       // 로그인 성공 판단
       if (res.status === 200) {
         setError("");
+
+        sessionStorage.setItem("userId", res.data.userId);
+        console.log("저장된 userId:", sessionStorage.getItem("userId"));
+
         alert("로그인 성공!");
-        localStorage.setItem("accessToken", res.data.accessToken);
+        //navigate("/home");
         if (rememberID) {
           Cookies.set('rememberId', id, { expires: 30 });
         } else {

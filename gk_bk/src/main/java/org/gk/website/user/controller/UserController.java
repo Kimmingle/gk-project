@@ -31,7 +31,7 @@ public class UserController {
 
         UserLoginResponse result = userService.login(request);
 
-        System.out.println("d");
+        System.out.println(result);
 
         return ResponseEntity.ok(result);
     }

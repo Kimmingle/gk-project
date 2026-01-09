@@ -19,23 +19,22 @@ const Home = () => {
             axios.get("/api/me", {
             headers: { Authorization: `Bearer ${token}` },
             }).then(res => {
-            setId(res.data.userId);
-            console.log(id)
-            console.log(res)
+            setId(sessionStorage.getItem("userId"));
+            console.log("id:",id)
+            
             });
         }
     }, []);
 
     Cookies.get('rememberId');
     console.log(rememberId);
+    console.log("id:",id);
 
-    return(
+    return( 
         <>
-        <div className="layout">
+        <div className="layout"> 
         
         <Headers/>
-
-
         <main className="main">
             <div className="inner">
                 {id ? (
@@ -51,8 +50,6 @@ const Home = () => {
             </button>
             </div>
         </main>
-
-
         <Footer/>
         </div>
         </>
